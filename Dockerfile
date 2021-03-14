@@ -3,7 +3,7 @@ FROM rust:1-stretch as builder
 WORKDIR /usr/webby
 RUN rustup default nightly && rustup update
 RUN USER=root cargo init
-COPY Cargo.* .
+COPY Cargo.* /usr/webby/
 COPY src src
 RUN cargo build --release
 
