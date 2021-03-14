@@ -4,10 +4,12 @@
 extern crate rocket;
 
 #[get("/version")]
-fn index() -> &'static str {
+fn version() -> &'static str {
     env!("CARGO_PKG_VERSION")
 }
 
 fn main() {
-    rocket::ignite().mount("/", routes![index]).launch();
+    rocket::ignite()
+        .mount("/", routes![version])
+        .launch();
 }
