@@ -1,0 +1,12 @@
+# Compiled Binaries
+/target
+
+# Git
+/.github
+/.git
+
+# IDEs
+/.idea
+
+# Misc.
+README.md
