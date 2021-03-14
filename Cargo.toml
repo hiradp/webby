@@ -1,5 +1,5 @@
 [package]
-name = "website"
+name = "webby"
 version = "0.1.0"
 authors = ["Hirad Pourtahmasbi <git@hirad.codes>"]
 edition = "2018"
