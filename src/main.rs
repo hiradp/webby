@@ -9,7 +9,5 @@ fn version() -> &'static str {
 }
 
 fn main() {
-    rocket::ignite()
-        .mount("/", routes![version])
-        .launch();
+    rocket::ignite().mount("/", routes![version]).launch();
 }
