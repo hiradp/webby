@@ -2,6 +2,9 @@ on: [pull_request]
 
 name: Pull Requeset
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
   check:
     name: Check
