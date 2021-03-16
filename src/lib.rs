@@ -10,10 +10,8 @@ mod routes;
 use rocket_contrib::json::JsonValue;
 use rocket_contrib::templates::Template;
 
-#[derive(serde::Serialize)]
-struct TemplateContext {
-    name: String,
-}
+use routes::api::v1;
+use routes::index;
 
 #[catch(404)]
 fn not_found() -> JsonValue {
@@ -23,16 +21,10 @@ fn not_found() -> JsonValue {
     })
 }
 
-#[get("/")]
-fn index() -> Template {
-    let context = TemplateContext { name: "Hirad".to_string() };
-    Template::render("index", &context)
-}
-
 pub fn rocket() -> rocket::Rocket {
     rocket::ignite()
-        .mount("/api", routes![routes::version::get_version])
-        .mount("/", routes![index])
+        .mount("/api/v1", routes![v1::version::get])
+        .mount("/", routes![index::get])
         .attach(Template::fairing())
         .register(catchers![not_found])
 }
