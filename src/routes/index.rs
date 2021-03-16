@@ -7,6 +7,8 @@ struct TemplateContext {
 
 #[get("/")]
 pub fn get() -> Template {
-    let context = TemplateContext { name: "Hirad".to_string() };
+    let context = TemplateContext {
+        name: "Hirad".to_string(),
+    };
     Template::render("index", &context)
 }
