@@ -5,6 +5,7 @@ RUN rustup default nightly && rustup update
 RUN USER=root cargo init
 COPY Cargo.* /usr/webby/
 COPY src src
+COPY templates templates
 RUN cargo build --release
 
 FROM debian:stretch-slim
