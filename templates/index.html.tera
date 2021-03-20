@@ -1,5 +1,8 @@
 {% extends "base" %}
 
 {% block content %}
-    <h1>Hi, my name is {{name}}!</h1>
+    <div>
+        <h1>Hi 👋, my name is {{first_name}} {{last_name}}!</h1>
+        <p> I am a {{job.title}} at <a href="{{job.link}}">{{job.company}}</a>.</p>
+    </div>
 {% endblock content %}
