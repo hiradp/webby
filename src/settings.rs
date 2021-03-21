@@ -1,6 +1,5 @@
 use config::{Config, ConfigError, Environment, File};
 use serde::Deserialize;
-use std::{env, fmt};
 
 use crate::models::{Job, Meta, Person};
 
@@ -23,12 +22,6 @@ impl Settings {
         // Start off by merging in the "default" configuration file
         s.merge(File::with_name("config/default"))?;
 
-        // Add in the current environment file
-        // Default to 'development' env
-        // Note that this file is _optional_
-        let env = env::var("RUN_MODE").unwrap_or_else(|_| "development".into());
-        s.merge(File::with_name(&format!("config/{}", env)).required(false))?;
-
         // Add in a local configuration file
         // This file shouldn't be checked in to git
         s.merge(File::with_name("config/local").required(false))?;
@@ -40,29 +33,3 @@ impl Settings {
     }
 }
 
-#[derive(Clone, Debug, Deserialize)]
-pub enum Env {
-    Development,
-    Testing,
-    Production,
-}
-
-impl fmt::Display for Env {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        match self {
-            Env::Development => write!(f, "Development"),
-            Env::Testing => write!(f, "Testing"),
-            Env::Production => write!(f, "Production"),
-        }
-    }
-}
-
-impl From<&str> for Env {
-    fn from(env: &str) -> Self {
-        match env {
-            "Testing" => Env::Testing,
-            "Production" => Env::Production,
-            _ => Env::Development,
-        }
-    }
-}

@@ -35,11 +35,26 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8000
               protocol: TCP
+          env:
+            - name: WEBBY_DEBUG
+              value: "{{ .Values.app.debug }}"
+            - name: WEBBY_PERSON__FIRST_NAME
+              value: "{{ .Values.app.person.first }}"
+            - name: WEBBY_PERSON__LAST_NAME
+              value: "{{ .Values.app.person.last }}"
+            - name: WEBBY_JOB__COMPANY
+              value: "{{ .Values.app.job.company }}"
+            - name: WEBBY_JOB__TITLE
+              value: "{{ .Values.app.job.title }}"
+            - name: WEBBY_JOB__URL
+              value: "{{ .Values.app.job.url }}"
+            - name: WEBBY_META__FAVICONS
+              value: "{{ .Values.app.meta.favicons }}"
           livenessProbe:
             httpGet:
-              path: /
+              path: /api/v1/version
               port: http
           readinessProbe:
             httpGet:
