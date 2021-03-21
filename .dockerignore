@@ -1,9 +1,13 @@
+
 # Compiled Binaries
 /target
 
 # Git
 /.github
 /.git
+
+# Helm Charts
+/charts
 
 # IDEs
 /.idea
