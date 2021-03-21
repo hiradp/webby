@@ -14,6 +14,18 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+app:
+  debug: false
+  person:
+    first: Katherine
+    last: Johnson
+  job:
+    company: NASA
+    title: Pioneer
+    url: "https://nasa.gov"
+  meta:
+    favicons: "🕸"
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -38,7 +50,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8000
 
 ingress:
   enabled: false
@@ -68,7 +80,7 @@ resources: {}
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
