@@ -10,7 +10,7 @@ pub struct Person {
 pub struct Job {
     pub company: String,
     pub title: String,
-    pub url: String
+    pub url: String,
 }
 
 #[derive(Debug, Deserialize)]
