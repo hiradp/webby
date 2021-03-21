@@ -32,4 +32,3 @@ impl Settings {
         s.try_into()
     }
 }
-
