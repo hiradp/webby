@@ -1,0 +1,13 @@
+debug = false
+
+[person]
+first_name = "John"
+last_name = "Doe"
+
+[job]
+company = "Google, Inc."
+title = "Big Boss"
+url = "http://google.com"
+
+[meta]
+favicons = "🔥⚽️🤖"

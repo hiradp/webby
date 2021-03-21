@@ -1,5 +1,8 @@
 # Compiled Binaries
 /target
 
+# Environment
+/config/local.toml
+
 # IDEs
 /.idea
