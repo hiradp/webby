@@ -10,6 +10,8 @@ COPY src src
 RUN cargo build --release
 
 FROM debian:stretch-slim
+COPY --from=builder /usr/webby/config /config
+COPY --from=builder /usr/webby/templates /templates
 COPY --from=builder /usr/webby/target/release/webby /bin/
 
 EXPOSE 8000
